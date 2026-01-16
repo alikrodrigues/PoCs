@@ -1,4 +1,8 @@
 // SET - LET
+// O let foi criado para trazer ao JavaScript algo que outras linguagens já tinham há décadas:
+// escopo de bloco e comportamento previsível
+
+// Set, mais performatico que o array ou object, não aceita duplicado, tem funções nativas
 const languages = new Set();
 languages.add("JS");
 languages.add("Java");
