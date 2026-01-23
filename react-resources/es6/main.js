@@ -132,3 +132,24 @@ console.log(newArr);
 
 const array = [{ items: ["a", "b"] }, { items: ["c", "d"] }];
 console.log(array.flatMap((item) => item.items));
+
+// JS 2021
+// Promise.Any
+//Retorna a primeira promise que foi finalizada
+
+const carPromise = new Promise((resolve, reject) => {
+  setTimeout(resolve, 1000, { id: "CAR_1232", name: "HRV", categoryId: "SUV" });
+});
+
+const categoryCarPromise = new Promise((resolve, reject) => {
+  setTimeout(resolve, 1200, { id: "SUV", size: "3M" });
+});
+
+Promise.any([carPromise, categoryCarPromise]).then((result) => {
+  console.log(result);
+});
+
+// JS 2026
+// is error Safer than instanceof
+Error.isError(new TypeError()); // true
+Error.isError({ name: "Error" }); // false
