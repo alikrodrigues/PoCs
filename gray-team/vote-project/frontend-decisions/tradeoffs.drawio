@@ -1,0 +1,82 @@
+<mxfile host="65bd71144e">
+    <diagram id="mXPVBy1f0QIw7lUlcgM-" name="Page-1">
+        <mxGraphModel dx="906" dy="620" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="WEB X MOBILE" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="170" y="40" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="&lt;b&gt;PROS&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="50" y="70" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Easy to access" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="25" y="100" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;React Native x KMM + Compose Multiplataform&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="135" y="230" width="230" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="&lt;b&gt;RN Pros&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="90" y="280" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Many years production ready" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="320" width="90" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Friendly to WEB Devs" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="95" y="380" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="&lt;div&gt;Hot Reloading&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="90" y="430" width="70" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="Easy to deploy" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="25" y="130" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="&lt;b&gt;RN Cons&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="180" y="280" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="Perfomance" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="180" y="320" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="Bundle Size" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="180" y="370" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="&lt;b&gt;KMM Pros&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="330" y="280" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Native Perfomance" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="310" y="320" width="130" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="Identical UI&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="330" y="360" width="90" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="IOS/Android can have different UI" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="180" y="420" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="Bundle Size" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="410" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="&lt;p&gt;Native knowledge is required&lt;/p&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="460" y="310" width="180" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="&lt;b&gt;KMM Cons&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="280" width="90" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="&lt;b&gt;CONS&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="70" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="Text" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="100" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="Language strong&amp;nbsp;&lt;div&gt;typed&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="310" y="443" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="WEB/DESKTOP Versions" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="285" y="500" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="Over-the-Air (OTA) Updates" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="35" y="483" width="170" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
