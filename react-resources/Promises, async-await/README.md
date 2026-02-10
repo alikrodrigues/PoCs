@@ -42,3 +42,84 @@ Promise.any() = Assim como o race ele tbm retornar a primeira a finalizar mas el
 Promise.resolve() = Cria uma promise já resolvida (sucesso)
 
 Promise.reject() = Cria uma promise já rejeitada (erro)
+
+### Async Await
+
+Uma forma mais simples de trabalhar com as Promise, lançado no ES2017
+
+```javascript
+function getUser() {
+  return Promise.resolve({
+    id: 1,
+  });
+}
+
+getUser().then((user) => {
+  console.log(user);
+});
+
+//      VS
+
+async function getUser() {
+  return {
+    id: 1,
+  };
+}
+
+const user = await getUser();
+console.log(user);
+```
+
+o beneficio fica mais visivel quando vc trabalha com mais de uma chamadas asyncronas
+
+```javascript
+function getUser() {
+  return Promise.resolve({
+    id: 1,
+  });
+}
+
+function getCar() {
+  return Promise.resolve({
+    id: 1,
+    name: "Fusca",
+  });
+}
+
+getUser()
+  .then((user) => {
+    console.log(user);
+    return getCar();
+  })
+  .then((car) => {
+    console.log(car);
+  });
+
+//      VS
+
+async function getUser() {
+  return {
+    id: 1,
+  };
+}
+
+async function getCar() {
+  return {
+    id: 1,
+    name: "Fusca",
+  };
+}
+
+Promise.allSettled(getCar, getUser);
+
+const user = await getUser();
+const car = await getCar();
+console.log(user);
+console.log(car);
+```
+
+Os metodos do Promise tbm podem ser usados com funções async
+
+```javascript
+Promise.allSettled([getCar(), getUser()]).then((result) => console.log(result));
+```
