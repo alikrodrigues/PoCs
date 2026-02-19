@@ -121,3 +121,54 @@ myObj["myCars"]["car2"];
 ### Logando um Objeto
 
 Comumente aparece desenvolvedores iniciantes com problemas para logar o objeto.. com o famoso: [Object Object]
+
+Podemos resolver esse problema de algumas maneiras, como:
+
+Desestruturando:
+
+```javascript
+console.log({ object });
+```
+
+-> isso vai destruturar o objeto e logar cada atributo do mesmo
+
+Transformando em JSON:
+
+```javascript
+console.log(JSON.toStringify(object));
+```
+
+-> vai converter o objeto em uma string JSON
+
+Printando pelos atributos:
+
+```javascript
+console.log(object.name + " ," + object.size);
+```
+
+-> vai aparecer os atributos cada um que for chamado
+
+Printando por FOR:
+
+```javascript
+for (let x in object) {
+  console.log(object[x]);
+}
+```
+
+-> vai aparecer os atributos TODOS do objeto separadamente por linha.
+
+Capturando os values do objeto e fazer cast para string:
+
+```javascript
+const myArray = Object.values(object);
+
+// Stringify the Array
+let text = myArray.toString();
+//or
+let text = myArray.join(", ");
+
+console.log(text);
+```
+
+-> A função Values captura os valores de todos os atributos do objeto e depois o toString/Join converte esse array para string.
