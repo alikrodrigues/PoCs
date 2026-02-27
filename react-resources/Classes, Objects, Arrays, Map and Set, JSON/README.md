@@ -172,3 +172,94 @@ console.log(text);
 ```
 
 -> A função Values captura os valores de todos os atributos do objeto e depois o toString/Join converte esse array para string.
+
+### Outros jeitos de manipular um Objeto
+
+É muito extensa a variedade de maneiras de como manipular um objeto, vou trazer aqui a Função "construtora" Object, que tem muitas outras funções que podem manipular o objeto, como copiar, mudar valor de atributo, adicionar atributo, capturar as keys do object..
+
+```javascript
+// Adicionar ou alterar um atributo
+Object.defineProperty(person, "year", { value: "2008" });
+```
+
+Com o object conseguimos tambem definir se o Objeto pode ser alterado como adicionar novos atributos e outras coisas como forma de proteger esse Objeto
+
+```javascript
+// Cria Array
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+Object.preventExtensions(fruits);
+
+// Isso causará um erro:
+fruits.push("Kiwi");
+
+// *** Seal Object
+
+// Cria Object
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50,
+  eyeColor: "blue",
+};
+
+Object.seal(person);
+
+// Isso causará um erro:
+delete person.age;
+
+// *** Freeze Object
+
+// Freeze Object
+Object.freeze(person);
+
+// Isso causará um erro:
+person.age = 51;
+```
+
+### Map
+
+map, filter e reduce (introduzidos no ES5), motivados pela popularização da programação funcional.
+
+Basicament como muita coisa em JS Map é um objeto por debaixo dos panos, é muito parecido com o dictionary de algumas linguagens ou o proprio Map do Java
+
+```javascript
+// Criando um Map
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200],
+]);
+
+// Adicionando um atributo novo no Map
+fruits.set("mangos", 100);
+
+// ou alterando
+fruits.set("apples", 200);
+
+// capturando
+fruits.get("apples");
+
+// Retonar que o tipo é object:
+typeof fruits;
+
+// Retorna verdadeiro para instancia de um Map:
+fruits instanceof Map;
+```
+
+| Característica         | `Object`                                 | `Map`                                        |
+| :--------------------- | :--------------------------------------- | :------------------------------------------- |
+| Iterabilidade          | Não é diretamente iterável               | Diretamente iterável                         |
+| Propriedade de tamanho | Não possui uma propriedade `size`        | Possui uma propriedade `size`                |
+| Tipos de chaves        | As chaves devem ser Strings (ou Symbols) | As chaves podem ser de qualquer tipo de dado |
+| Ordem das chaves       | As chaves não são bem ordenadas          | As chaves são ordenadas por inserção         |
+| Chaves padrão          | Possui chaves padrão                     | Não possui chaves padrão                     |
+
+Fontes:
+
+https://www.w3schools.com/js/js_maps.asp
+
+https://www.w3schools.com/js/js_classes.asp
+
+https://www.w3schools.com/js/js_asynchronous.asp
+
+https://www.w3schools.com/js/js_object_advanced.asp
