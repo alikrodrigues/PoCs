@@ -1,5 +1,5 @@
-import { createElement } from "../react/index.js";
-import CounterApp from "../components/counter-app.js";
+import { createElement } from "../modules/react/index.js";
+import Characteres from "../components/render-characteres.js";
 
 function Home(props) {
   return createElement(
@@ -7,7 +7,8 @@ function Home(props) {
     { class: "home-container" },
     createElement("div", { class: "home-title" }, "My React App Home"),
     createElement("div", { class: "home-welcome" }, "Welcome to my React App"),
-    createElement(CounterApp, {}),
+    createElement(Characteres, {}),
+    // createElement(CounterApp, {}),
   );
 }
 

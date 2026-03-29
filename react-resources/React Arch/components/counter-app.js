@@ -1,4 +1,4 @@
-import { createElement, useEffect, useState } from "../react/index.js";
+import { createElement, useEffect, useState } from "../modules/react/index.js";
 
 function CounterApp(props) {
   const [count, setCount] = useState(0);

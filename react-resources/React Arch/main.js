@@ -1,4 +1,4 @@
-import { createElement, mount } from "./react/index.js";
+import { createElement, mount } from "./modules/react/index.js";
 import Home from "./pages/home.js";
 
 console.log("to passanod aqui ? ");

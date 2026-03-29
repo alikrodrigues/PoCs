@@ -10,7 +10,10 @@ body {
 }
 
 .home-container {
-  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+  height: 100vh;
 }
 
 .home-title {
