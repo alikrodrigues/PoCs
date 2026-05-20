@@ -1,8 +1,7 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
-// simula um check de autenticação
 const fakeAuth = {
-  isLoggedIn: false,
+  isLoggedIn: true,
 };
 
 export const Route = createFileRoute("/admin")({
