@@ -1,4 +1,4 @@
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
 const fakeAuth = {
   isLoggedIn: true,
@@ -26,6 +26,7 @@ function AdminComponent() {
     <div>
       <h1>Painel Admin</h1>
       <p>{data.secretMessage}</p>
+      <Outlet />
     </div>
   );
 }
