@@ -24,6 +24,9 @@ export const Route = createRootRoute({
         <Link to="/admin" activeProps={{ style: { fontWeight: "bold" } }}>
           Admin
         </Link>
+        <Link to="/characters" activeProps={{ style: { fontWeight: "bold" } }}>
+          Personagens (Auth)
+        </Link>
       </nav>
 
       <hr />
