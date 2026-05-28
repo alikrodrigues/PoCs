@@ -34,7 +34,7 @@ function CharactersComponent() {
           gap: "1rem",
         }}
       >
-        {data.results.map((char) => (
+        {data.results.map((char: Character) => (
           <div
             key={char.id}
             style={{

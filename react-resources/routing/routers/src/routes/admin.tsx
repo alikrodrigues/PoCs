@@ -1,19 +1,12 @@
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
-const fakeAuth = {
-  isLoggedIn: true,
-};
-
 export const Route = createFileRoute("/admin")({
-  // beforeLoad roda ANTES do loader — serve como guard
-  beforeLoad: async () => {
-    if (!fakeAuth.isLoggedIn) {
-      // redireciona pra home se não estiver logado
+  beforeLoad: async ({ context }) => {
+    if (!context.auth.isLoggedIn) {
       throw redirect({ to: "/" });
     }
   },
   loader: async () => {
-    // só chega aqui se o beforeLoad passou
     return { secretMessage: "Você tem acesso ao painel admin!" };
   },
   component: AdminComponent,

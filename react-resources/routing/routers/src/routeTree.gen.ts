@@ -11,8 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UsersRouteImport } from './routes/users'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PostsPostIdRouteImport } from './routes/posts/$postId'
+import { Route as AuthenticatedCharactersRouteImport } from './routes/_authenticated/characters'
 import { Route as AdminUsersCreateRouteImport } from './routes/admin/users.create'
 
 const UsersRoute = UsersRouteImport.update({
@@ -25,6 +27,10 @@ const AdminRoute = AdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRoute = AuthenticatedRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -34,6 +40,11 @@ const PostsPostIdRoute = PostsPostIdRouteImport.update({
   id: '/posts/$postId',
   path: '/posts/$postId',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedCharactersRoute = AuthenticatedCharactersRouteImport.update({
+  id: '/characters',
+  path: '/characters',
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
 const AdminUsersCreateRoute = AdminUsersCreateRouteImport.update({
   id: '/users/create',
@@ -45,6 +56,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
   '/users': typeof UsersRoute
+  '/characters': typeof AuthenticatedCharactersRoute
   '/posts/$postId': typeof PostsPostIdRoute
   '/admin/users/create': typeof AdminUsersCreateRoute
 }
@@ -52,14 +64,17 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
   '/users': typeof UsersRoute
+  '/characters': typeof AuthenticatedCharactersRoute
   '/posts/$postId': typeof PostsPostIdRoute
   '/admin/users/create': typeof AdminUsersCreateRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/admin': typeof AdminRouteWithChildren
   '/users': typeof UsersRoute
+  '/_authenticated/characters': typeof AuthenticatedCharactersRoute
   '/posts/$postId': typeof PostsPostIdRoute
   '/admin/users/create': typeof AdminUsersCreateRoute
 }
@@ -69,21 +84,31 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/users'
+    | '/characters'
     | '/posts/$postId'
     | '/admin/users/create'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin' | '/users' | '/posts/$postId' | '/admin/users/create'
-  id:
-    | '__root__'
+  to:
     | '/'
     | '/admin'
     | '/users'
+    | '/characters'
+    | '/posts/$postId'
+    | '/admin/users/create'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/admin'
+    | '/users'
+    | '/_authenticated/characters'
     | '/posts/$postId'
     | '/admin/users/create'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
   AdminRoute: typeof AdminRouteWithChildren
   UsersRoute: typeof UsersRoute
   PostsPostIdRoute: typeof PostsPostIdRoute
@@ -105,6 +130,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -119,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PostsPostIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/characters': {
+      id: '/_authenticated/characters'
+      path: '/characters'
+      fullPath: '/characters'
+      preLoaderRoute: typeof AuthenticatedCharactersRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/admin/users/create': {
       id: '/admin/users/create'
       path: '/users/create'
@@ -128,6 +167,18 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface AuthenticatedRouteChildren {
+  AuthenticatedCharactersRoute: typeof AuthenticatedCharactersRoute
+}
+
+const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedCharactersRoute: AuthenticatedCharactersRoute,
+}
+
+const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
+  AuthenticatedRouteChildren,
+)
 
 interface AdminRouteChildren {
   AdminUsersCreateRoute: typeof AdminUsersCreateRoute
@@ -141,6 +192,7 @@ const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRoute: AuthenticatedRouteWithChildren,
   AdminRoute: AdminRouteWithChildren,
   UsersRoute: UsersRoute,
   PostsPostIdRoute: PostsPostIdRoute,

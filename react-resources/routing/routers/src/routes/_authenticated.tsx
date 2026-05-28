@@ -1,15 +1,13 @@
 import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
-const auth = {
-  isLoggedIn: true,
-};
-
 export const Route = createFileRoute("/_authenticated")({
-  beforeLoad: async ({ location }) => {
-    if (!auth.isLoggedIn) {
+  beforeLoad: async ({ location, context }) => {
+    // Agora usamos o contexto injetado no App.tsx
+    if (!context.auth.isLoggedIn) {
       throw redirect({
         to: "/",
         search: {
+          // Opcional: passar a URL atual para redirecionar de volta após login
           redirect: location.href,
         },
       });
