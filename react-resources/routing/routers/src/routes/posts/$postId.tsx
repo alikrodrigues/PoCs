@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/posts/$postId")({
+  staleTime: 30_000,
   loader: async ({ params }) => {
-    console.log(params.postId);
+    console.log(`Buscando post ${params.postId}...`);
     const res = await fetch(
       `https://jsonplaceholder.typicode.com/posts/${params.postId}`,
     );
-    console.log(res);
     if (!res.ok) throw new Error("Falha ao buscar post");
     return await res.json();
   },

@@ -1,4 +1,8 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import {
+  createFileRoute,
+  useNavigate,
+  useRouter,
+} from "@tanstack/react-router";
 import { z } from "zod";
 
 type User = {
@@ -16,7 +20,11 @@ const userSearchSchema = z.object({
 export const Route = createFileRoute("/users")({
   validateSearch: (search) => userSearchSchema.parse(search),
   loaderDeps: ({ search: { filter } }) => ({ filter }),
+  staleTime: 10_000, // tempo que o dado é valido para uso em cache
+  // gcTime: 30 minutos. Tempo que os dados ficam em memória após a rota se tornar inativa.
+  gcTime: 30 * 60 * 1000,
   loader: async ({ deps: { filter } }) => {
+    console.log(" usuarios filtrados:", filter);
     const res = await fetch("https://jsonplaceholder.typicode.com/users");
     if (!res.ok) throw new Error("Falha ao buscar usuários");
     const users = (await res.json()) as User[];
@@ -39,6 +47,7 @@ function UsersComponent() {
   const users = Route.useLoaderData();
   const { filter } = Route.useSearch();
   const navigate = useNavigate({ from: Route.fullPath });
+  const router = useRouter();
 
   const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     navigate({
@@ -47,10 +56,39 @@ function UsersComponent() {
     });
   };
 
+  const handleRefresh = () => {
+    router.invalidate();
+  };
+
   return (
     <div>
-      <h1>Usuários</h1>
-      <p>Esses dados vieram do loader, filtrados por Search Params.</p>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <h1>Usuários</h1>
+        <button
+          onClick={handleRefresh}
+          style={{
+            padding: "8px 16px",
+            backgroundColor: "#2196F3",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+          }}
+        >
+          Recarregar Dados (Invalidate)
+        </button>
+      </div>
+
+      <p>
+        Estes dados estão em cache (staleTime: 10s). Abra o console para ver
+        quando o loader é disparado.
+      </p>
 
       <div style={{ marginBottom: "1rem" }}>
         <label htmlFor="filter">Filtrar por nome: </label>
