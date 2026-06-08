@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'Élysée — Barber Shop Week Agenda</title>
+  
+  <!-- Typography: Cormorant Garamond for Serifs & Outfit for Sans-serif -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+  <div class="app-container">
+    
+    <!-- HEADER -->
+    <header class="app-header">
+      <div class="header-brand">
+        <span class="brand-sub">Maison de Beauté</span>
+        <h1 class="brand-title">L'Élysée</h1>
+      </div>
+      
+      <div class="header-actions">
+        <!-- Week Navigator -->
+        <div class="week-nav-container">
+          <button class="btn-icon" id="prev-week" aria-label="Previous Week">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 19l-7-7 7-7" /></svg>
+          </button>
+          <span class="current-week-label" id="week-range-display">June 8 – June 14, 2026</span>
+          <button class="btn-icon" id="next-week" aria-label="Next Week">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5l7 7-7 7" /></svg>
+          </button>
+        </div>
+        
+        <button class="btn btn-primary" id="btn-quick-book">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-svg"><path d="M12 5v14M5 12h14" /></svg>
+          New Booking
+        </button>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      
+      <!-- ASIDE: Barbers, Stats & Services -->
+      <aside class="sidebar">
+        <!-- Section: Active Barber Selection -->
+        <div class="sidebar-section">
+          <h2 class="sidebar-title">Our Artisans</h2>
+          <div class="barbers-list" id="barbers-list-container">
+            <!-- Dynamically populated, example layout: -->
+            <!-- 
+            <div class="barber-card active" data-barber-id="all">
+              <div class="barber-avatar">All</div>
+              <div class="barber-info">
+                <span class="barber-name">All Artisans</span>
+                <span class="barber-specialty">Full Schedule</span>
+              </div>
+            </div>
+            -->
+          </div>
+        </div>
+
+        <!-- Section: Selected Barber Stats -->
+        <div class="sidebar-section stats-section">
+          <h2 class="sidebar-title">Weekly Digest</h2>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-value" id="stat-booked-hours">0h</span>
+              <span class="stat-label">Booked</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value" id="stat-occupancy">0%</span>
+              <span class="stat-label">Capacity</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value" id="stat-services-count">0</span>
+              <span class="stat-label">Clients</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Curated Service Rituals -->
+        <div class="sidebar-section services-section">
+          <h2 class="sidebar-title">Curated Rituals</h2>
+          <div class="services-list">
+            <div class="service-item">
+              <div class="service-meta">
+                <span class="service-name">The Classic Haircut</span>
+                <span class="service-price">$45</span>
+              </div>
+              <span class="service-duration">45 mins</span>
+            </div>
+            <div class="service-item">
+              <div class="service-meta">
+                <span class="service-name">Beard Design & Shave</span>
+                <span class="service-price">$35</span>
+              </div>
+              <span class="service-duration">30 mins</span>
+            </div>
+            <div class="service-item">
+              <div class="service-meta">
+                <span class="service-name">The Signature Ritual</span>
+                <span class="service-price">$75</span>
+              </div>
+              <span class="service-duration">75 mins</span>
+            </div>
+          </div>
+        </div>
+        
+        <footer class="sidebar-footer">
+          <p>© 2026 L'Élysée. Purely Organic Minimal.</p>
+        </footer>
+      </aside>
+
+      <!-- MAIN CONTENT: The Grid View -->
+      <main class="schedule-viewport">
+        <!-- Day Headers (Monday to Sunday) -->
+        <div class="agenda-container">
+          <div class="timeline-scale">
+            <!-- Spacer to align with days grid -->
+            <div class="scale-corner"></div>
+            <!-- Vertical Time Slots on Left Sidebar -->
+            <div class="scale-hours" id="scale-hours-container">
+              <!-- Dynamically populated: 09:00, 10:00, etc. -->
+            </div>
+          </div>
+
+          <div class="agenda-grid-outer">
+            <!-- Day Columns Headers -->
+            <div class="days-header-row" id="days-header-row">
+              <!-- Dynamically populated: Mon 08, Tue 09, etc. -->
+            </div>
+
+            <!-- Main grid containing appointment cards & empty cells -->
+            <div class="agenda-grid-body" id="agenda-grid-body">
+              <!-- Dynamically populated grid rows & cells -->
+            </div>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- BOOKING MODAL -->
+  <div class="modal-backdrop" id="booking-modal">
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close-btn" aria-label="Close Modal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12" /></svg>
+      </button>
+      
+      <div class="modal-header">
+        <span class="modal-subtitle">Reservation Desk</span>
+        <h3 class="modal-title" id="modal-title-text">Schedule Ritual</h3>
+      </div>
+      
+      <form class="booking-form" id="booking-form">
+        <input type="hidden" id="booking-id" value="">
+        
+        <div class="form-group">
+          <label for="booking-client">Client Name</label>
+          <input type="text" id="booking-client" placeholder="e.g., Alexander Mercer" required autocomplete="off">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="booking-day">Day of Week</label>
+            <select id="booking-day" required>
+              <option value="Monday">Monday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Friday">Friday</option>
+              <option value="Saturday">Saturday</option>
+              <option value="Sunday">Sunday</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="booking-time">Preferred Time</label>
+            <select id="booking-time" required>
+              <!-- Populated by JavaScript to match operational hours -->
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="booking-barber">Select Artisan</label>
+            <select id="booking-barber" required>
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="booking-service">Selected Ritual</label>
+            <select id="booking-service" required>
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="booking-notes">Special Requests (Optional)</label>
+          <textarea id="booking-notes" placeholder="e.g., Low skin fade, extra hot towel, espresso on arrival." rows="3"></textarea>
+        </div>
+
+        <div class="modal-actions" id="modal-actions-container">
+          <!-- Populated dynamically to include a Delete button when editing -->
+          <button type="submit" class="btn btn-primary btn-block" id="modal-submit-btn">Confirm Reservation</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- SCRIPT -->
+  <script src="app.js"></script>
+</body>
+</html>
