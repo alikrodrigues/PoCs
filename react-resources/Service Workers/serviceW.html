@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service Worker POC</title>
+  </head>
+  <body>
+    <h1>Welcome to my Service Worker POC</h1>
+    <p>Abra o Console do desenvolvedor para ver o status do registro.</p>
+    <button id="fetchButton" class="background-color: 'red'">Fetch Dolar Data</button>
+    <p>Cache Status: <strong id="cacheStatus">Pending...</strong></p>
+    <p>Dolar Data:</p>
+    <p id="dolarData" ></p>
+
+    <script>
+
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('index.js')
+          .then(reg => console.log('Service Worker registrado!', reg))
+          .catch(err => console.error('Falha ao registrar:', err));
+      }
+
+      if ('Notification' in window && Notification.permission !== 'granted') {
+        Notification.requestPermission();
+      }
+
+      document.getElementById('fetchButton').addEventListener('click', () => {
+        fetch("https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao='06-17-2026'&$top=100&$format=json").then(response =>{
+          const isCached = response.headers.get('X-Is-Cached') === 'true';
+          document.getElementById('cacheStatus').innerText = isCached ? 'Loaded from Cache' : 'Loaded from Network';
+          response.json().then(data => {
+             document.getElementById("dolarData").innerHTML = data.value[0].cotacaoCompra;
+          });
+        })
+      });
+
+      setTimeout(() =>
+      fetch("https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao='06-17-2026'&$top=100&$format=json").then(response =>{
+          const isCached = response.headers.get('X-Is-Cached') === 'true';
+          document.getElementById('cacheStatus').innerText = isCached ? 'Loaded from Cache' : 'Loaded from Network';
+          response.json().then(data => {
+             document.getElementById("dolarData").innerHTML = data.value[0].cotacaoCompra;
+          });
+        }),
+       1000)
+    </script>
+  </body>
+</html>
