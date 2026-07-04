@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORLD CUP ARCADE POOL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="scanlines"></div>
+    
+    <div class="container">
+        <header class="retro-header">
+            <h1 class="blinking-text">P1: WORLD CUP POOL</h1>
+            <div class="score-display">CREDITS: <span id="credit-count">99</span></div>
+        </header>
+
+        <main class="dashboard">
+            <section class="matches-section retro-panel">
+                <div class="panel-header">
+                    <h2>NEXT MATCHES</h2>
+                </div>
+                <div id="matches-container" class="matches-grid">
+                    <!-- Matches injected via JS -->
+                </div>
+            </section>
+
+            <aside class="leaderboard-section retro-panel">
+                <div class="panel-header">
+                    <h2>HIGH SCORES</h2>
+                </div>
+                <ul id="leaderboard-list" class="leaderboard">
+                    <!-- Leaderboard injected via JS -->
+                </ul>
+            </aside>
+        </main>
+        
+        <footer class="retro-footer">
+            <p>INSERT COIN TO CONTINUE</p>
+        </footer>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
